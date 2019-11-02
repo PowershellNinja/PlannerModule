@@ -28,11 +28,11 @@ function Get-PlannerAuthToken
 	)
 	
 	Write-Host "Checking for AzureAD module..."
-	$AadModule = Get-Module -Name "AzureAD" -ListAvailable
+	$AadModule = Get-Module -Name "AzureAD" -ListAvailable | Select-Object -First 1
 	if ($AadModule -eq $null)
 	{
 		Write-Host "AzureAD PowerShell module not found, looking for AzureADPreview"
-		$AadModule = Get-Module -Name "AzureADPreview" -ListAvailable
+		$AadModule = Get-Module -Name "AzureADPreview" -ListAvailable | Select-Object -First 1
 	}
 	if ($AadModule -eq $null)
 	{
